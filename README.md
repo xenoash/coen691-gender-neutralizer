@@ -1,5 +1,5 @@
 # gender-neutralizer
-Gender Neutralizer is a simple web service that is a RESTful API that simply converts gender-specific text into gender-neutral text. It was tested on Google App Engine (GAE) standard enviornment on the cloud with Python 2.7, django non-rel for the NoSQL Google Datastore implementation.
+Gender Neutralizer is a simple web service that is a RESTful API that simply converts gender-specific text into gender-neutral text. There is another [advanced version](https://github.com/xenoash/coen691-gender-neutralizer) of this tool that utilizes a NoSQL datastore for the gender dictionary (instead of storing it as a local file) which was tested on Google App Engine (GAE) standard enviornment on the cloud with Python 2.7, django non-rel for the NoSQL Google Datastore implementation.
 
 The tool is mashed up with NYT search API to look for NYT articles to convert their text into geneder-neutral text. However, the built-in neutralize function of the tool can basically work with any url that we insert in the url as in the following URL pattern: 
 
@@ -15,7 +15,7 @@ Inserting user input can be done using the following URL patterns after the doma
 
 Additionally, the service allows to upload text documents to convert their text into gender-neutral form.
 
-**Implementation:**
+### **Implementation:**
 The main app contains the following functions which implements the main functionality of the web service.
 
 extract function: This function basically extracts the text of any NYT article chosen by the user or the file content in the case of an uploaded file . To extract the text from NYT articles, we used a python package called Beautiful soup. First, we collect the html content of the page of the article by requesting the URL of the page.
@@ -35,7 +35,7 @@ Afterwards, we will be left with the `<p>` and `<a>` html tags that contain the 
 text = soup.get_text()
 ```
 
-neutralize function: This function contains our main algorithm for the project. In this simple version of the tool, the neitralize algorithm is designed to use a dictionary text file stored in root directory (note that this dictionary can always be modified by updating or deleting its entries) to gender-neutralize any text. We access the dictionary text file with this code snippet
+neutralize function: This function contains our main algorithm for the project. In this simple version of the tool, the neitralize algorithm is designed to use a dictionary text file stored in ```proj``` directory (note that this dictionary can always be modified by updating or deleting its entries) to gender-neutralize any text. We access the dictionary text file with this code snippet
 
 ```python
 file = open (os.path.join(settings.PROJECT_ROOT,"dictionary.txt"))
