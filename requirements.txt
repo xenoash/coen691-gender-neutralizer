@@ -6,7 +6,7 @@ chardet==3.0.0
 click==6.7
 cookiecutter==1.5.1
 cookiejar==0.0.1
-Django==1.11
+Django==2.2.24
 future==0.16.0
 Jinja2==2.9.6
 jinja2-time==0.2.0
